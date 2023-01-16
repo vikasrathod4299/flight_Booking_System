@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "boardactive",
+    "password": "boardactive",
+    "database": "flight_bookings",
+    "host": "localhost",
+    "port":1100,
+    "dialect": "postgres",
+    "logging":  false 
+  },
+  "test": {
+    "username": "boardactive",
+    "password": "boardactive",
+    "database": "flight_bookings",
+    "host": "localhost",
+    "port":1100,
+    "dialect": "postgres",
+    "logging":  false 
+  },
+  "production": {
+    "username": "boardactive",
+    "password": "boardactive",
+    "database": "flight_bookings",
+    "host": "localhost",
+    "port":1100,
+    "dialect": "postgres",
+    "logging":  false 
+  }
+}
