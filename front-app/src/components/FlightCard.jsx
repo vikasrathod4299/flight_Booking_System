@@ -17,16 +17,16 @@ const FlightCard = ({ from, to, flight }) => {
           ) / 1000
         )
       );
-    }, [from, to])
-
+    }, [from,to])
+    // console.log(flight);
   return (
     <div className="">
       <div className="flex justify-around items-center bg-slate-50 shadow-blue-100 rounded-md shadow-lg  z-50 h-32 ">
         <div className="flex gap-x-3">
           <div className="flex items-center">
             <img
-              className="h-8 rounded-full shadow-red-200 shadow-lg"
-              src="https://upload.wikimedia.org/wikipedia/commons/f/f5/AirAsia_New_Logo.svg"
+              className="h-8  shadow-red-200 shadow-lg"
+              src={flight.aircraft.agency.logo}
               alt="ageincy logo"
             />
           </div>
@@ -43,7 +43,7 @@ const FlightCard = ({ from, to, flight }) => {
             <p className="text-xs text-slate-400">
               {from.name}, {from.country}
             </p>
-            <p className="font-bold text-xl">12:30</p>
+            <p className="font-bold text-xl">{flight.depTime}</p>
             <p className="text-xs text-slate-400">Chhtrapati Shivaji Airport</p>
           </div>
         </div>
@@ -52,14 +52,14 @@ const FlightCard = ({ from, to, flight }) => {
             <p className="text-xs text-slate-400">
               {to.name}, {to.country}
             </p>
-            <p className="font-bold text-xl">12:30</p>
+            <p className="font-bold text-xl">{flight.arrTime}</p>
             <p className="text-xs text-slate-400">Chhtrapati Shivaji Airport</p>
           </div>
         </div>
           <div>
             <p className="text-xs text-slate-400">Price</p>
-            <p className="text-2xl font-thin ">
-              {(distance * 5)
+            <p className="text-2xl font-extralight">
+              {(distance * flight.aircraft.agency.price)
                 .toLocaleString("en-IN", { style: "currency", currency: "INR" })
                 .slice(0, -3)}
             </p>
@@ -75,7 +75,7 @@ const FlightCard = ({ from, to, flight }) => {
             }
             className="tracking-wide bg-gradient-to-l from-purple-400 to-cyan-500 text-white shadow-purple-200 shadow-lg rounded-md h-8 px-3 font-light hover:scale-105 transition-all duration-200 hover:shadow-xl hover:shadow-purple-200"
           >
-            View prices <i className="fa fa-caret-down" aria-hidden="true"></i>
+            View prices <i className="fa fa-caret-down" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -139,8 +139,8 @@ const FlightCard = ({ from, to, flight }) => {
           <div className="flex flex-col gap-y-2 ">
             <div>
                 <Link to={`/bookingDetails/${flight.id}`} state={{flight,from,to}}>
-                  <p className="text-sm text-center text-transparent  bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-bold border-2 border-blue-400 px-2 rounded-md hover:bg-clip-padding hover:text-white hover:font-light cursor-pointer  hover:border-white hover:scale-110 hover:shadow-md hover:shadow-blue-300 transition duration-200">
-                    {(distance * 5)
+                  <p className="text-sm text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-bold border-2 border-blue-400 px-2 rounded-md hover:bg-clip-padding hover:text-white hover:font-light cursor-pointer  hover:border-white hover:scale-110 hover:shadow-md hover:shadow-blue-300 transition duration-200">
+                    {(distance * flight.aircraft.agency.price)
                       .toLocaleString("en-IN", {
                         style: "currency",
                         currency: "INR",
@@ -151,7 +151,7 @@ const FlightCard = ({ from, to, flight }) => {
             </div>
             <div>
               <p className="text-sm text-center text-transparent  bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-bold border-2 border-blue-400 px-2 rounded-md hover:bg-clip-padding hover:text-white hover:font-light cursor-pointer  hover:border-white hover:scale-110 hover:shadow-md hover:shadow-blue-300 transition duration-200">
-                {(distance * (5 + 2))
+                {(distance * (flight.aircraft.agency.price + 2))
                   .toLocaleString("en-IN", {
                     style: "currency",
                     currency: "INR",
@@ -161,7 +161,7 @@ const FlightCard = ({ from, to, flight }) => {
             </div>
             <div>
               <p className="text-sm text-center text-transparent  bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-bold border-2 border-blue-400 px-2 rounded-md hover:bg-clip-padding hover:text-white hover:font-light cursor-pointer  hover:border-white hover:scale-110 hover:shadow-md hover:shadow-blue-300 transition duration-200">
-                {(distance * (5 + 3))
+                {(distance * (flight.aircraft.agency.price + 3))
                   .toLocaleString("en-IN", {
                     style: "currency",
                     currency: "INR",

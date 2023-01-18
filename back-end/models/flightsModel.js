@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes)=>{
       flights.belongsTo(model.mainroot)
       flights.belongsTo(model.aircrafts)
       flights.hasMany(model.booking)
+      flights.hasMany(model.seat)
     }
     return flights
 }

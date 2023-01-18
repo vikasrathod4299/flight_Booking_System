@@ -1,5 +1,6 @@
 const {agencies} = require("../models")
 const joi = require('joi')
+
 const getAgencies = async (req,res)=>{
     try{
         const agencie = await agencies.findAll({});
@@ -26,7 +27,6 @@ const bulkAgencies = async (req,res)=>{
         res.status(500).json(err)
     }
 }
-
 
 const validations = joi.object().keys({
     agency_name: joi.string(),

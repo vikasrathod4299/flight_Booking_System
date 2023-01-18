@@ -17,6 +17,7 @@ const SearchInput = ({ ph, name, setCityId, cities, excludeCity }) => {
     }
     setTimeout(() => setShowList(false), 100);
   };
+  
   return (
     <div className="flex flex-col w-1/6">
       <code className="text-gray-600" htmlFor="fromCity">
@@ -43,11 +44,11 @@ const SearchInput = ({ ph, name, setCityId, cities, excludeCity }) => {
               <p
                 className="bg-white p-4 hover:bg-slate-100 shadow-lg cursor-pointer"
                 key={city.id}
-                onClick={(e) => {
+                onClick={() => {
                   setCity(city.name);
                   setBorder('border-gray-300');
                   setErrorMsg("")
-                setCityId(p=>({...p, [name]:city.id}));
+                  setCityId(p=>({...p, [name]:city.id}));
                   setShowList(false);
                 }}
               >

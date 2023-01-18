@@ -1,18 +1,19 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import FareSummary from "../components/FareSummary";
 import SeatBooking from "../components/SeatBooking";
 
 const Booking = () => {
   const location = useLocation();
-  const { flight, from, to } = location.state;
+  // const { flight, from, to } = location.state;
   const searchParams = JSON.parse(window.localStorage.getItem("searchParam"));
 
   return (
-    <div className="container flex gap-x-4">
-      <div className="bg-slate-100 rounded-md shadow-lg p-8 w-2/4">
+    <div className="container flex justify-center gap-x-4">
+      <div className="bg-slate-100 rounded-md shadow-lg px-8 py-4 w-2/4">
         <code className="text-black">Passengers Details</code>
         
-        <div className="flex flex-col gap-y-4 ">
+        <form className="flex flex-col gap-y-4 ">
             
           <div className="accordion w-full" id="accordionExampleadult">
             {Array(parseInt(searchParams.adult))
@@ -51,7 +52,7 @@ const Booking = () => {
                     </h2>
                     <div
                       id={`collapse${index}`}
-                      className="accordion-collapse collapse show"
+                      className="accordion-collapse collapse "
                       aria-labelledby={`#heading${index}`}
                       data-bs-parent="#accordionExampleadult"
                     >
@@ -114,7 +115,7 @@ const Booking = () => {
                     </h2>
                     <div
                       id={`collapse${index}child`}
-                      className="accordion-collapse collapse show"
+                      className="accordion-collapse collapse"
                       aria-labelledby={`#heading${index}child`}
                       data-bs-parent="#accordionExamplechild"
                     >
@@ -139,15 +140,31 @@ const Booking = () => {
                 );
               })}
           </div>
+
+          <div className="flex justify-between">
+            <div className="flex flex-col">
+              <code className="text-sm text-slate-600">Phone Number:</code>
+              <input className="p-2 rounded-md" placeholder="Phone number"/>
+            </div>
+            <div className="flex flex-col">
+              <code className="text-sm text-slate-600">Email:</code>
+              <input type={'email'} className="p-2 rounded-md" placeholder="Enter Email"/>
+              <code className="text-xs font-extralight text-slate-400 py-1">*Your ticket will be sent to this email</code>
+            </div>
+          </div>
       
           <div className="flex justify-end">
               <button className="bg-cyan-500 text-white rounded-md shadow-md p-2 px-4 font-bold">Proceed</button>
           </div>
-        </div>
-      </div>
-      <div className="">
+        </form>
+      </div>  
+
+        <FareSummary adult={searchParams.adult} child={searchParams.child}/>
+
+      {/* <div className="">
         <SeatBooking/>
       </div>
+       */}
     </div>
   );
 };

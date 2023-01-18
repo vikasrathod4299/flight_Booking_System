@@ -32,9 +32,12 @@ const addBulkFlight = async (req, res) => {
 };
 
 const getFlightbyCIty = async (req, res) => {
-  const { fromCity, toCity, date } = req.query;
+  
+  const { fromCity, toCity, date,returnDate } = req.query;
+
   try {
-    let data = await mainroot.findAll({
+
+    const data = await mainroot.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt", "fromCityId", "toCityId", "cityId"],
       },
@@ -65,9 +68,45 @@ const getFlightbyCIty = async (req, res) => {
       where: { fromCityId: fromCity, toCityId: toCity },
     });
 
-    res.json(data);
+    if(returnDate!='undefined'){
+        const returnData = await mainroot.findAll({
+          attributes: {
+            exclude: ["createdAt", "updatedAt", "fromCityId", "toCityId", "cityId"],
+          },
+          include: [
+            {
+              model: flights,
+              where: { date: returnDate },
+              attributes: { exclude: ["createdAt", "updatedAt"]},
+              include:[
+                {
+                  model:aircrafts, 
+                  include:[{model:agencies, attributes: { exclude: ["createdAt", "updatedAt"]} }],
+                  attributes: { exclude: ["createdAt", "updatedAt"]}
+                }
+              ],
+            },
+            {
+              model: city,
+              as: "fromCity",
+              attributes: { exclude: ["createdAt", "updatedAt"] },
+            },
+            {                                                                   
+              model: city,
+              as: "toCity",
+              attributes: { exclude: ["createdAt", "updatedAt"] },
+            },
+          ],
+          where: { fromCityId: toCity, toCityId: fromCity },
+        });
+
+        res.json({data,returnData})
+        return
+  }
+
+    res.json({data});
+
   } catch (err) {
-    console.error(err);
     res.status(402).json(err);
   }
 };

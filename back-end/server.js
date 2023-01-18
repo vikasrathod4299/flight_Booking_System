@@ -31,7 +31,7 @@ const bookingRoute = require('./routes/booking.routes')
 app.use('/api/bookings', bookingRoute)
 
 
-db.sequelize.sync({ force:true })
+db.sequelize.sync({ force:false })
 .then(()=> app.listen(process.env.PORT||3001,()=> console.log(`Server is running on port ${process.env.PORT}!`)))
 .catch((err)=>console.log(err))
 
