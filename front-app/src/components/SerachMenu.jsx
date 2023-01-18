@@ -1,19 +1,14 @@
 import axios from "axios";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
-import { useForm } from "react-hook-form";
-
 const SerachMenu = () => {
+  const navigate = useNavigate()
+  const [validatFlage, setFlag] = useState(false)
+  const [errMsg, setErrMsg] = useState("");
+  const [borderClass, setBorderClass] = useState('border-gray-300')
   const [cities, setCities] = useState([]);
   
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-
   const [params, setParams] = useState({
     depaDate: new Date().toJSON().split("T")[0],
     adult: "1",
@@ -32,8 +27,14 @@ const SerachMenu = () => {
     setParams((p) => ({ ...p, [e.target.name]: e.target.value }));
   };
 
-  const setLocalStore = (e) => {
-    window.localStorage.setItem("searchParam", JSON.stringify(params));
+  const handleSearch = (e) => {
+    if(validatFlage){
+      navigate(`/searchFlight?fromCity=${params.fromCity}&toCity=${params.toCity}&date=${params.depaDate}&returnDate=${params.returnDate}`)
+      window.localStorage.setItem("searchParam", JSON.stringify(params));
+    }else{
+      setBorderClass('border-red-500')
+      setErrMsg('*Select city from dropdown!')
+    }
   };
 
   return (
@@ -41,7 +42,6 @@ const SerachMenu = () => {
       <div className="pt-40 max-w-screen-xl mx-auto px-20  lg:px-0 ">
           <div className=" bg-white flex justify-center items-center h-52 rounded-3xl shadow-xl px-12">
             
-
             <div className="flex gap-x-4 w-[80vw] mx-auto flex-col sm:flex-row">
               <SearchInput
                 cities={cities}
@@ -49,6 +49,11 @@ const SerachMenu = () => {
                 name={"fromCity"}
                 excludeCity={params.toCity}
                 setCityId={setParams}
+                setFlag={setFlag}
+                borderClass={borderClass}
+                setBorderClass={setBorderClass}
+                errMsg={errMsg}
+                setErrMsg={setErrMsg}
               />
               <SearchInput
                 cities={cities}
@@ -56,6 +61,11 @@ const SerachMenu = () => {
                 name={"toCity"}
                 excludeCity={params.fromCity}
                 setCityId={setParams}
+                setFlag={setFlag}
+                borderClass={borderClass}
+                setBorderClass={setBorderClass}
+                errMsg={errMsg}
+                setErrMsg={setErrMsg}
                 />  
               <div className="flex flex-col w-1/6">
                 <code className="text-gray-600" htmlFor="departure">
@@ -116,14 +126,13 @@ const SerachMenu = () => {
             </div>
           </div>
           <div className="text-center -mt-5 w-full">
-            <Link
-              to={`/searchFlight?fromCity=${params.fromCity}&toCity=${params.toCity}&date=${params.depaDate}&returnDate=${params.returnDate}`}>
+
               <button
                 className="tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 px-16 font-bold hover:tracking-widest"
-                onClick={setLocalStore}>
+                onClick={handleSearch}>
                 SEARCH
               </button>
-            </Link>
+
           </div>
       </div>
       <Outlet/>

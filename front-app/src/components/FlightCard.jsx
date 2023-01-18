@@ -18,7 +18,8 @@ const FlightCard = ({ from, to, flight }) => {
         )
       );
     }, [from,to])
-    // console.log(flight);
+
+    
   return (
     <div className="">
       <div className="flex justify-around items-center bg-slate-50 shadow-blue-100 rounded-md shadow-lg  z-50 h-32 ">
@@ -68,9 +69,9 @@ const FlightCard = ({ from, to, flight }) => {
           <button
             onClick={(e) =>
               sethClass(
-                hClass === "h-[150px] opacity-100"
+                hClass === "h-[150px] opacity-100 mb-3"
                   ? "h-[0px] opacity-0"
-                  : "h-[150px] opacity-100"
+                  : "h-[150px] opacity-100 mb-3"
               )
             }
             className="tracking-wide bg-gradient-to-l from-purple-400 to-cyan-500 text-white shadow-purple-200 shadow-lg rounded-md h-8 px-3 font-light hover:scale-105 transition-all duration-200 hover:shadow-xl hover:shadow-purple-200"
