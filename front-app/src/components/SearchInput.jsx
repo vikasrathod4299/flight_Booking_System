@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const SearchInput = (props) => {
   const [city, setCity] = useState("");
   const [showList, setShowList] = useState(false);
-
   const filteredCities = props.cities.filter(
     (item) =>
       item.name.includes(city.toLocaleLowerCase()) &&
@@ -32,7 +31,7 @@ const SearchInput = (props) => {
         onFocus={(e) => setShowList(true)}
         onBlur={handleBlur}
       />
-      <p className="text-red-500">{props.errMsg}</p>
+      <p className="text-red-500 text-xs">{props.errMsg}</p>
 
       {showList && (
         <div className=" h-52 fixed w-1/6 mt-20 overflow-y-auto ">

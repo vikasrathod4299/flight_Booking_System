@@ -21,6 +21,7 @@ const FlightCard = ({ from, to, flight }) => {
 
     
   return (
+    
     <div className="">
       <div className="flex justify-around items-center bg-slate-50 shadow-blue-100 rounded-md shadow-lg  z-50 h-32 ">
         <div className="flex gap-x-3">

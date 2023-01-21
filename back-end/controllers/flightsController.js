@@ -104,7 +104,7 @@ const getFlightbyCIty = async (req, res) => {
         return
   }
 
-    res.json({data});
+    res.json({data,returnData:[]});
 
   } catch (err) {
     res.status(402).json(err);

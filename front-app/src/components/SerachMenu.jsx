@@ -1,9 +1,11 @@
 import axios from "axios";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
 const SerachMenu = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  
   const [validatFlage, setFlag] = useState(false)
   const [errMsg, setErrMsg] = useState("");
   const [borderClass, setBorderClass] = useState('border-gray-300')
@@ -11,6 +13,7 @@ const SerachMenu = () => {
   
   const [params, setParams] = useState({
     depaDate: new Date().toJSON().split("T")[0],
+    returnDate:undefined,
     adult: "1",
     child: 0,
   });
@@ -78,21 +81,21 @@ const SerachMenu = () => {
                   name="depaDate"
                   value={params.depaDate}
                   placeholder="Departure date"
-                  min={new Date().toJSON().split("T")[0]  }
+                  min={new Date().toJSON().split("T")[0]}
                   onChange={handleParams}
                   />
               </div>
 
               <div className="flex flex-col w-1/6">
                   <code className="text-gray-600" htmlFor="return">
-                  
-                    Return:
+                    Return: <button onClick={e=>setParams(p=>({...p,returnDate:undefined}))}><i className="fa-solid fa-circle-xmark" /></button>
                   </code>
                   <input
                     className="p-3  border-2 outline-blue-500 border-gray-300 rounded-lg"
                     type={"date"}
                     id="return"
                     name="returnDate"
+                    value={params.returnDate==undefined?'':params.returnDate}
                     placeholder="Return date"
                     min={params.depaDate}
                     onChange={handleParams}
@@ -128,9 +131,9 @@ const SerachMenu = () => {
           <div className="text-center -mt-5 w-full">
 
               <button
-                className="tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 px-16 font-bold hover:tracking-widest"
+                className={`tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 ${location.pathname!='/searchFlight'?'px-16':'px-8'} font-bold hover:tracking-widest`}
                 onClick={handleSearch}>
-                SEARCH
+                {location.pathname!='/searchFlight'?'SEARCH':'UPDATE SEARCH'}
               </button>
 
           </div>
