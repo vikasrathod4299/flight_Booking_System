@@ -68,12 +68,12 @@ const Flights = () => {
     <div className="">
       <div id="flights" className={`my-32 bg-white`}>
         {
-          loder!='fetching'
+          loder!=='fetching'
           ?
             (flights 
             ? 
               (
-                searchParams.get("returnDate") === "" 
+                searchParams.get("returnDate") === 'undefined' 
                 ? 
                   (<div className="flex justify-center gap-x-4">
                     <FiltersCard handleChange={handleFilterChange} />

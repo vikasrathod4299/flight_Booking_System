@@ -95,7 +95,7 @@ const SerachMenu = () => {
                     type={"date"}
                     id="return"
                     name="returnDate"
-                    value={params.returnDate==undefined?'':params.returnDate}
+                    value={params.returnDate===undefined?'':params.returnDate}
                     placeholder="Return date"
                     min={params.depaDate}
                     onChange={handleParams}
@@ -131,9 +131,9 @@ const SerachMenu = () => {
           <div className="text-center -mt-5 w-full">
 
               <button
-                className={`tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 ${location.pathname!='/searchFlight'?'px-16':'px-8'} font-bold hover:tracking-widest`}
+                className={`tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 ${location.pathname!=='/searchFlight'?'px-16':'px-8'} font-bold hover:tracking-widest`}
                 onClick={handleSearch}>
-                {location.pathname!='/searchFlight'?'SEARCH':'UPDATE SEARCH'}
+                {location.pathname!=='/searchFlight'?'SEARCH':'UPDATE SEARCH'}
               </button>
 
           </div>
