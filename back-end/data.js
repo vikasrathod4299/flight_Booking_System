@@ -2,84 +2,84 @@ const data={
     cityData:[
     {
         "id": 1,
-        "name": "ahmedabad",
+        "name": "Ahmedabad",
         "longitude": 72.5714,
         "latitude": 23.0225,
         "country": "india"
     },
     {
         "id": 2,
-        "name": "delhi",
+        "name": "Delhi",
         "longitude": 77.1025,
         "latitude": 28.7041,
         "country": "india"
     },
     {
         "id": 3,
-        "name": "gandhinagar",
+        "name": "Gandhinagar",
         "longitude": 72.6369,
         "latitude": 23.2156,
         "country": "india"
     },
     {
         "id": 4,
-        "name": "chennai",
+        "name": "Chennai",
         "longitude": 80.2707,
         "latitude": 13.0827,
         "country": "india"
     },
     {
         "id": 5,
-        "name": "mumbai",
+        "name": "Mumbai",
         "longitude": 72.8777,
         "latitude": 19.076,
         "country": "india"
     },
     {
         "id": 6,
-        "name": "bangalore",
+        "name": "Bangalore",
         "longitude": 77.5946,
         "latitude": 12.9716,
         "country": "india"
     },
     {
         "id": 7,
-        "name": "pune",
+        "name": "Pune",
         "longitude": 73.8567,
         "latitude": 18.5204,
         "country": "india"
     },
     {
         "id": 8,
-        "name": "goa",
+        "name": "Goa",
         "longitude": 74.124,
         "latitude": 15.2993,
         "country": "india"
     },
     {
         "id": 9,
-        "name": "srinagar",
+        "name": "Srinagar",
         "longitude": 74.7973,
         "latitude": 34.0837,
         "country": "india"
     },
     {
         "id": 10,
-        "name": "kolkata",
+        "name": "Kolkata",
         "longitude": 88.3639,
         "latitude": 22.5726,
         "country": "india"
     },
     {
         "id": 11,
-        "name": "jaipur",
+        "name": "Jaipur",
         "longitude": 75.7873,
         "latitude": 26.9124,
         "country": "india"
     },
     {
         "id": 12,
-        "name": "bhopal",
+        "name": "Bhopal",
         "longitude": 77.4126,
         "latitude": 23.2599,
         "country": "india"
@@ -249,280 +249,245 @@ const data={
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":1,
                 "mainrootId":1,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":2,
                 "mainrootId":1,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":3,
                 "mainrootId":1,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":4,
                 "mainrootId":1,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":5,
                 "mainrootId":1,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-25"
-            },
-            {
-                "aircraftId":1,
-                "mainrootId":1,
-                "depTime":"01:30",
-                "arrTime":"05:20",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":2,
-                "mainrootId":1,
-                "depTime":"10:00",
-                "arrTime":"13:50",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":3,
-                "mainrootId":1,
-                "depTime":"03:00",
-                "arrTime":"06:05",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":4,
-                "mainrootId":1,
-                "depTime":"02:30",
-                "arrTime":"07:00",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":5,
-                "mainrootId":1,
-                "depTime":"06:15",
-                "arrTime":"10:30",
-                "date":"2023-01-26"
+                "date":"2023-02-07"
             },
 
             {
@@ -530,280 +495,245 @@ const data={
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-20"
+                "date":"2023-02-01"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-21"
+                "date":"2023-02-02"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-22"
+                "date":"2023-02-03"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-21"
+                "date":"2023-02-04"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-23"
+                "date":"2023-02-05"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-24"
+                "date":"2023-02-06"
             },
             {
                 "aircraftId":1,
                 "mainrootId":2,
                 "depTime":"01:30",
                 "arrTime":"05:20",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":2,
                 "mainrootId":2,
                 "depTime":"10:00",
                 "arrTime":"13:50",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":3,
                 "mainrootId":2,
                 "depTime":"03:00",
                 "arrTime":"06:05",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":4,
                 "mainrootId":2,
                 "depTime":"02:30",
                 "arrTime":"07:00",
-                "date":"2023-01-25"
+                "date":"2023-02-07"
             },
             {
                 "aircraftId":5,
                 "mainrootId":2,
                 "depTime":"06:15",
                 "arrTime":"10:30",
-                "date":"2023-01-25"
-            },
-            {
-                "aircraftId":1,
-                "mainrootId":2,
-                "depTime":"01:30",
-                "arrTime":"05:20",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":2,
-                "mainrootId":2,
-                "depTime":"10:00",
-                "arrTime":"13:50",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":3,
-                "mainrootId":2,
-                "depTime":"03:00",
-                "arrTime":"06:05",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":4,
-                "mainrootId":2,
-                "depTime":"02:30",
-                "arrTime":"07:00",
-                "date":"2023-01-26"
-            },
-            {
-                "aircraftId":5,
-                "mainrootId":2,
-                "depTime":"06:15",
-                "arrTime":"10:30",
-                "date":"2023-01-26"
+                "date":"2023-02-07"
             }
 
     ],
