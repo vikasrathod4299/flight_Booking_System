@@ -1,6 +1,7 @@
+const { request } = require('express');
 const httpStatus = require('http-status');
-const { Model } = require('sequelize');
-const {booking} = require('../models');
+const {booking,passenger, seat} = require('../models');
+
 
 const getBookings = async (req,res)=>{
     try{
@@ -13,26 +14,35 @@ const getBookings = async (req,res)=>{
     }
 }
 
-const bookingFlight = async (req,res)=>{
+const createBooking = async (req,res)=>{
     try{
-        let data = await booking.findAll(req.body.booking)
-        if(data.id){
-            let passengersData = req.body.passengers.map((item)=>{
-                item['bookingId']=data.id
-                return item
+        const bookingData = await booking.create(req.body.bookingData)
+        if(bookingData.dataValues.id){
+            req.body.passengers= req.body.passengers.map((passenger)=>{
+                return {...passenger, bookingId:bookingData.dataValues.id}
             })
-            let seatData = req.body.passengers.map((item)=>{
-                item['bookingId']=data.id
-                return item
-            })
-            passengersResult = await booking.bulkCreate(passengersData)
-            seatResult = await booking.bulkCreate()
-            res.status(200).json({...booking,passengersResult,seatResult})
+            
+            const passengerData = await passenger.bulkCreate(req.body.passengers,{validate:true})
+            
+            if(passengerData.length>0){
+                req.body.seats = req.body.seats.map((seat,index)=>{
+                    console.log(passengerData[index].id)
+                    return {...seat, bookingId:bookingData.dataValues.id, passengerId:passengerData[index].id}
+                })
+
+                const seatData = await seat.bulkCreate(req.body.seats,{validate:true})
+                
+                if(seatData.length>0){
+                    res.json({bookingData, passengerData, seatData})
+                }                
+            }
+
         }
+
     }catch(err){
-        res.status(404).json(err.STATUS_PROP)
+        console.log(err);
+        res.status(400).json(err)
     }
 }
 
-
-module.exports={bookingFlight}
+module.exports={createBooking}

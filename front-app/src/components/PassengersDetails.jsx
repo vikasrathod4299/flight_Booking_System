@@ -1,7 +1,7 @@
 import React from 'react'
 import {useForm } from "react-hook-form";
 
-const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
+const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle}) => {
 
     const {
         register,
@@ -70,8 +70,8 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                     <code>Name</code>
                     <div className="flex h-8 gap-x-2">
                       <div className="flex flex-col">
-                        <select defaultValue="" {...register(`adult${index + 1}title`,{required: true})}>
-                          <option value={""} disabled>
+                        <select defaultValue={passengers[`adult${index + 1}title`] || ""} {...register(`adult${index + 1}title`,{required: true})}>
+                          <option value={''} disabled>
                             Title
                           </option>
                           <option value={1}>Mr</option>
@@ -100,6 +100,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                           )}
                           placeholder="First Name"
                           autoComplete='off'
+                          defaultValue={passengers[`adult${index + 1}firstName`]||''}
                         />
                         {errors[`adult${index + 1}firstName`] && (
                           <code className="text-xs text-red-500">
@@ -121,6 +122,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                           )}
                           placeholder="Last Name"
                           autoComplete='off'
+                          defaultValue={passengers[`adult${index + 1}lastName`]||''}
                         />
                         {errors[`adult${index + 1}lastName`] && (
                           <code className="text-xs text-red-500">
@@ -178,13 +180,13 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                   id={`collapse${index}child`}
                   className={`accordion-collapse collapse `}
                   aria-labelledby={`#heading${index}child`}
-                  data-bs-parent="#accordionExamplechild"
-                >
+                  data-bs-parent="#accordionExamplechild">
+
                   <div className="flex justify-around accordion-body py-4 px-5">
                     <code>Name</code>
                     <div className="flex gap-x-2">
                       <div className="flex flex-col">
-                        <select defaultValue={""} {...register(`child${index + 1}title`,{required: true})}>
+                        <select defaultValue={passengers[`child${index + 1}title`]||""} {...register(`child${index + 1}title`,{required: true})}>
                           <option value={""} disabled>
                             Title
                           </option>
@@ -194,7 +196,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                         {errors[`child${index + 1}title`] && (
                           <code className="text-xs text-red-500">
                               *******
-                            </code>
+                          </code>
                           )}
                       </div>
                     </div>
@@ -213,6 +215,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                             }
                           )}
                           autoComplete='off'
+                          defaultValue={passengers[`child${index + 1}firstName`]||''}
                         />
 
                         {errors[`child${index + 1}firstName`] && (
@@ -235,6 +238,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
                             }
                           )}
                           autoComplete='off'
+                          defaultValue={passengers[`child${index + 1}lastName`]||''}
                         />
                         {errors[`child${index + 1}lastName`] && (
                           <code className="text-xs text-red-500">
@@ -255,16 +259,34 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
           <code className="text-sm text-slate-600">
             Phone Number:
           </code>
-          <input
+          <input 
             className="p-2 rounded-md"
+            type={'number'}
             placeholder="Phone number"
             id={`phone`}
             name={`phone`}
-            {...register('phone',{required: true})}
+            defaultValue={passengers.phone||''}
+            {...register('phone',
+            {
+            required: true,                              
+            minLength:{
+              value:10,
+            },
+            maxLength:{value:10}})}
           />
-          {errors.phone && (
+          {errors.phone?.type === 'required' && (
             <code className="text-xs text-red-500">
               *Phone number is required
+            </code>
+          )}
+          {errors.phone?.type === "minLength" && (
+            <code className="text-xs text-red-500">
+              *Enter Valid Number
+            </code>
+          )}
+          {errors.phone?.type === "maxLength" && (
+            <code className="text-xs text-red-500">
+              *Enter Valid Number
             </code>
           )}
         </div>
@@ -274,6 +296,7 @@ const PassengersDetails = ({searchParams, setPassengers, setToggle}) => {
             type={"email"}
             className="p-2 rounded-md"
             placeholder="Enter Email"
+            defaultValue={passengers.email||''}
             {...register('email',{required: true})}
           />
           {errors.email && (

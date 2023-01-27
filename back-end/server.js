@@ -39,6 +39,10 @@ app.use("/api/flights", flughtsRoute);
 const bookingRoute = require("./routes/booking.routes");
 app.use("/api/bookings", bookingRoute);
 
+const seatsRoute = require("./routes/seats.routes");
+app.use("/api/seats", seatsRoute);
+
+
 db.sequelize
   .sync({ force: false })
   .then(() =>

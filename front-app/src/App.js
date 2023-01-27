@@ -4,6 +4,7 @@ import SerachMenu from './components/SerachMenu';
 import Booking from './pages/Booking';
 import Flights from './pages/Flights';
 import Home from './pages/Home';
+import Payment from './pages/Payment';
 
 function App() {
   
@@ -14,8 +15,8 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='searchFlight' element={<Flights/>} />
         </Route>
-
         <Route path='bookingDetails/:id' element={<Booking/>} />
+        <Route path='payment' element={<Payment/>} />
       </Routes>
     </div>
   );

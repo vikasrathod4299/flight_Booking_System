@@ -1,7 +1,6 @@
 import React from "react";
 
 const FareSummary = (props) => {
-    const adultArr = Array(parseInt(props.adult))
     
    return (
     <div className="bg-white rounded-md h-min shadow-md w-56">
@@ -29,8 +28,7 @@ const FareSummary = (props) => {
                     .toLocaleString("en-IN", {
                       style: "currency",
                       currency: "INR",
-                    })
-                    .slice(0, -3)}
+                    }).slice(0, -3)}
                 </p>
               </div>
           <hr/>

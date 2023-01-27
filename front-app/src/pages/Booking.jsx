@@ -6,11 +6,14 @@ import TicketDetail from "../components/TicketDetail";
 import { useState } from "react";
 import PassengersDetails from "../components/PassengersDetails";
 
+
 const Booking = () => {
   const location = useLocation();
   const { flight, from, to, bookingClass, price } = location.state;
+  
   const [passengers, setPassengers] = useState({})
   const [toggle, setToggle] = useState('details')
+
   const searchParams = JSON.parse(window.localStorage.getItem("searchParam"));
 
   return (
@@ -19,15 +22,17 @@ const Booking = () => {
         <div className="flex gap-x-2">
           <div className="flex">
             <div className="flex flex-col justify-center gap-y-2 items-center">
-              <TicketDetail flight={flight} bookingClass={bookingClass} />
-              {toggle==='details'?
-              <PassengersDetails searchParams={searchParams} setPassengers={setPassengers} setToggle={setToggle}/>
-              :
-              <SeatBooking setToggle={setToggle} adult={parseInt(searchParams.adult)} child={parseInt(searchParams.child)}/>
-            }
+                <TicketDetail flight={flight} bookingClass={bookingClass} />
+                  {toggle==='details'
+                    ?
+                    <PassengersDetails searchParams={searchParams} setPassengers={setPassengers} passengers={passengers} setToggle={setToggle}/>
+                    :
+                    <SeatBooking price={price} flight={flight} setToggle={setToggle} adult={parseInt(searchParams.adult)} child={parseInt(searchParams.child)} passengers={passengers} />
+                  }
             </div>
           </div>
           <FareSummary adult={searchParams.adult} child={searchParams.child} price={price}/>
+
         </div>
 
       </div>
