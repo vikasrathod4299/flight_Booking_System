@@ -1,28 +1,38 @@
 import React from "react";
+import { useState } from "react";
+import loginBanner from '../Assets/Images/loginBanner.png'
 
-const LoginPopUp = () => {
-  return (
-    <div>
-    <div class="fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-gray-900 bg-opacity-50">
-        <div class="bg-white rounded p-6">
-                <h2 class="text-lg font-medium mb-4">Login</h2>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium mb-2">Email</label>
-                    <input class="bg-gray-200 p-2 rounded w-full" type="email" required/>
+const LoginPopUp = ({showLogin}) => {
+
+    const [email,setEmail] = useState('')
+
+    
+    return (
+    <div className=" z-50 fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-gray-900 bg-opacity-50 ">
+        <div className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border backdrop-blur-lg border-gray-200 rounded-lg p-6">
+            <div className="flex justify-end ">
+                <button onClick={showLogin}>
+                    <i className="fa-solid fa-circle-xmark text-white text-xl"/>
+                </button>
+            </div>
+            <div className="flex gap-x-8 ">
+                <div className="shadow-lg ">
+                    <img className="h-96 w-70 rounded-lg " src={loginBanner} alt="loginBanner" />
                 </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium mb-2">Password</label>
-                    <input class="bg-gray-200 p-2 rounded w-full" type="password" required/>
+                <div className="flex flex-col mt-5 font-mono text-white font-semibold">
+                    <h2 className="text-lg  mb-4">Login / SignUp</h2>
+                    <div className="mb-4">
+                        <label className="block  mb-2 ">Email:</label>
+                        <input className={`bg-gray-200 p-2 rounded w-full outline-white`} type="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Enter email..." required/>
+                    </div>
+
+                    <div className="mb-4 ">
+                        <input  className=" shadow-lg px-4 py-2 rounded bg-indigo-500 outline-none text-white cursor-pointer" type="submit" value="Continue" />
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium mb-2">OTP</label>
-                    <input class="bg-gray-200 p-2 rounded w-full" type="text" required/>
-                </div>
-                <div class="mb-4"/>
-                    <input class="px-4 py-2 rounded bg-indigo-500 text-white" type="submit" value="Login"/>
-                </div>
+            </div>
         </div>
-    </div>
+        </div>
   );
 };
 

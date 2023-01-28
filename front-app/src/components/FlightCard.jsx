@@ -19,7 +19,6 @@ const FlightCard = ({ from, to, flight }) => {
       );
     }, [from,to])
 
-    
   return (
     
     <div className="">
@@ -46,7 +45,7 @@ const FlightCard = ({ from, to, flight }) => {
               {from.name}, {from.country}
             </p>
             <p className="font-bold text-xl">{flight.depTime}</p>
-            <p className="text-xs text-slate-400">Chhtrapati Shivaji Airport</p>
+            <p className="text-xs text-slate-400">{from.airports[0]?.airport_name}</p>
           </div>
         </div>
         <div>
@@ -55,7 +54,7 @@ const FlightCard = ({ from, to, flight }) => {
               {to.name}, {to.country}
             </p>
             <p className="font-bold text-xl">{flight.arrTime}</p>
-            <p className="text-xs text-slate-400">Chhtrapati Shivaji Airport</p>
+            <p className="text-xs text-slate-400">{to.airports[0]?.airport_name}</p>
           </div>
         </div>
           <div>

@@ -5,6 +5,10 @@ module.exports = {
     container: {
       center: true,
     },
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
     extend: {},
   },
   plugins: [

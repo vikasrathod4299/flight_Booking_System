@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const Payment = () => {
   const navigate = useNavigate()
   const bookingData = JSON.parse(localStorage.getItem("bookingData"));
@@ -40,6 +41,7 @@ const Payment = () => {
     (async () => {
       try {
         const data = await axios.post(`${process.env.REACT_APP_API_URL}bookings`,{bookingData: {total_price: bookingData.total_price,total_passengers: (bookingData.adult + bookingData.child),total_adult:bookingData.adult,total_child:bookingData.child,flightId:bookingData.flightId},seats,passengers});
+        console.log(data);
         navigate('/')
       } catch (err) {
         console.log(err);

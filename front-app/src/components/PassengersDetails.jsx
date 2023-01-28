@@ -16,12 +16,12 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
   
 
   return (
-    <div className="bg-slate-100 rounded-md shadow-lg px-8 py-4 w-[700px]">
+    <div className="bg-white shadow-lg bg-clip-padding bg-opacity-30 backdrop-blur-lg border border-gray-200 rounded-md px-8 py-4 w-[700px]">
     <code className="text-black">Passengers Details</code>
     <form
       className="flex flex-col gap-y-4 "
-      onSubmit={handleSubmit(onSubmit)}
-    >
+      onSubmit={handleSubmit(onSubmit)}>
+        
       <div className="accordion w-full" id="accordionExampleadult">
         {Array(parseInt(searchParams.adult))
           .fill(null)
@@ -256,7 +256,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
 
       <div className="flex justify-between">
         <div className="flex flex-col">
-          <code className="text-sm text-slate-600">
+          <code className="text-sm text-black">
             Phone Number:
           </code>
           <input 
@@ -291,7 +291,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
           )}
         </div>
         <div className="flex flex-col">
-          <code className="text-sm text-slate-600">Email:</code>
+          <code className="text-sm text-black">Email:</code>
           <input
             type={"email"}
             className="p-2 rounded-md"
@@ -304,7 +304,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
               *Email is required
             </code>
           )}
-          <code className="text-xs font-extralight text-slate-400 py-1">
+          <code className="text-xs font-extralight text-slate-300 py-1">
             *Your ticket will be sent to this email
           </code>
         </div>

@@ -2,8 +2,8 @@ const { flights } = require("../models");
 const { mainroot } = require("../models");
 const { aircrafts } = require("../models");
 const { agencies } = require("../models");
+const { airport } = require("../models");
 const { city } = require("../models");
-
 const getFlight = async (req, res) => {
   try {
     let flight = await flights.findAll({});
@@ -56,11 +56,17 @@ const getFlightbyCIty = async (req, res) => {
         },
         {
           model: city,
+          include:[
+            {model:airport,attributes: { exclude: ["createdAt", "updatedAt"] }}
+          ],
           as: "fromCity",
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
         {                                                                   
           model: city,
+          include:[
+            {model:airport, attributes: { exclude: ["createdAt", "updatedAt"] }}
+          ],
           as: "toCity",
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
@@ -88,14 +94,20 @@ const getFlightbyCIty = async (req, res) => {
             },
             {
               model: city,
+              include:[
+                {model:airport, attributes: { exclude: ["createdAt", "updatedAt"] }}
+              ],
               as: "fromCity",
               attributes: { exclude: ["createdAt", "updatedAt"] },
             },
             {                                                                   
               model: city,
+              include:[
+                {model:airport, attributes: { exclude: ["createdAt", "updatedAt"] }}
+              ],
               as: "toCity",
               attributes: { exclude: ["createdAt", "updatedAt"] },
-            },
+            },  
           ],
           where: { fromCityId: toCity, toCityId: fromCity },
         });
@@ -107,6 +119,7 @@ const getFlightbyCIty = async (req, res) => {
     res.json({data,returnData:[]});
 
   } catch (err) {
+    console.log(err);
     res.status(402).json(err);
   }
 };

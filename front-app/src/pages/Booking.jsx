@@ -17,12 +17,12 @@ const Booking = () => {
   const searchParams = JSON.parse(window.localStorage.getItem("searchParam"));
 
   return (
-    <div className="bg-[url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80')] bg-cover bg-center opacity-80">
+    <div className="bg-[url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80')]  bg-cover bg-center opacity-80">
       <div className="container flex justify-center items-center h-screen gap-x-4">
         <div className="flex gap-x-2">
           <div className="flex">
             <div className="flex flex-col justify-center gap-y-2 items-center">
-                <TicketDetail flight={flight} bookingClass={bookingClass} />
+                <TicketDetail from={from} to={to} flight={flight} bookingClass={bookingClass} />
                   {toggle==='details'
                     ?
                     <PassengersDetails searchParams={searchParams} setPassengers={setPassengers} passengers={passengers} setToggle={setToggle}/>
@@ -32,9 +32,7 @@ const Booking = () => {
             </div>
           </div>
           <FareSummary adult={searchParams.adult} child={searchParams.child} price={price}/>
-
         </div>
-
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const SearchInput = (props) => {
   const [showList, setShowList] = useState(false);
   const filteredCities = props.cities.filter(
     (item) =>
-      item.name.includes(city.toLocaleLowerCase()) &&
+      item.name.toLocaleLowerCase().includes(city.toLocaleLowerCase()) &&
       item.id !== props.excludeCity
   );
 

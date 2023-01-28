@@ -15,9 +15,7 @@ const Flights = () => {
   const [mainData, setMainData]=useState([])
   const [loder,setLoder] = useState('idle')
 
-
   useEffect(() => {
-  
     (async () => {
       try{
         setLoder('fetching')
@@ -43,7 +41,8 @@ const Flights = () => {
         console.log(err)
       }
       })();
-  }, [searchParams]);
+  }, [searchParams])
+
 
   const handleFilterChange = (e) => {
     setAgencyFilters((p) => {
@@ -52,9 +51,9 @@ const Flights = () => {
       } else {
         p.delete(e.target.value);
       }
-      return new Set(p);
-    });
-  };
+      return new Set(p)
+    })
+  }
 
   useEffect(() => {
     if(agencyFilters.size>0){

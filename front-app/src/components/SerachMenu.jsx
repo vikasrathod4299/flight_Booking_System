@@ -2,10 +2,11 @@ import axios from "axios";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
+import LoginPopUp from './LoginPopUp'
 const SerachMenu = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  
+  const [toggle, setToggle] = useState(false)
   const [validatFlage, setFlag] = useState(false)
   const [errMsg, setErrMsg] = useState("");
   const [borderClass, setBorderClass] = useState('border-gray-300')
@@ -17,6 +18,8 @@ const SerachMenu = () => {
     adult: "1",
     child: 0,
   });
+
+  
 
 
   useEffect(() => {
@@ -32,7 +35,7 @@ const SerachMenu = () => {
 
   const handleSearch = (e) => {
     if(validatFlage){
-      navigate(`/searchFlight?fromCity=${params.fromCity}&toCity=${params.toCity}&date=${params.depaDate}&returnDate=${params.returnDate}`)
+      navigate(`/searchFlight?fromCity=${params.fromCity}&toCity=${params.toCity}&date=${params.depaDate}&returnDate=${params.returnDate}&for-${params.adult}a-${params.child}c`)
       window.localStorage.setItem("searchParam", JSON.stringify(params));
     }else{
       setBorderClass('border-red-500')
@@ -40,11 +43,43 @@ const SerachMenu = () => {
     }
   };
 
+  const showLogin = ()=>{
+    setToggle(toggle?false:true)
+  }
+
   return (
-    <div className="bg-gradient-to-r sticky -top-56 from-purple-500 to-cyan-500 h-64 shadow-purple-200 shadow-xl ">
-      <div className="pt-40 max-w-screen-xl mx-auto px-20  lg:px-0 ">
+    <div className="bg-gradient-to-r sticky -top-56 from-purple-500 to-cyan-500 h-64 shadow-purple-200 shadow-xl p-4">
+       {toggle&&<LoginPopUp showLogin={showLogin}/>}
+      
+      <div className="mx-8 flex justify-between">
+
+            <div className="text-white font-mono font-bold">
+                <button style={{"backdropFilter": "blur(20px)"}} onClick={()=>navigate('/')} className=" cursor-pointer rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200">
+                    <i class="fa-solid fa-house text-white"></i> Home
+                </button>
+            </div>
+
+            <div className="flex text-white w-96 font-mono text-sm justify-around  tracking-tighter font-bold">
+              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
+              onClick={showLogin}>
+                <i class="fa-solid fa-ticket text-white"/> Show my Tickets
+              </button>
+
+              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
+              onClick={showLogin}>
+                About
+              </button>
+
+                    
+              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
+                onClick={showLogin}>
+                  <i class="fa-solid fa-arrow-right-to-bracket text-white"/> Login/SignUp
+                </button>
+            </div>
+      </div>
+
+      <div className="pt-28 max-w-screen-xl  mx-auto px-20 lg:px-0 ">
           <div className=" bg-white flex justify-center items-center h-52 rounded-3xl shadow-xl px-12">
-            
             <div className="flex gap-x-4 w-[80vw] mx-auto flex-col sm:flex-row">
               <SearchInput
                 cities={cities}
@@ -106,41 +141,61 @@ const SerachMenu = () => {
                 <code className="text-gray-600" htmlFor="return">
                   Travellers:
                 </code>
-                <div className="flex gap-x-1">
-                  <input
+                <div className="flex gap-x-1 h-14">
+                  {/* <input
                     type="number"
-                    min={1}
                     value={params.adult}
                     onChange={handleParams}
                     name="adult"
                     className="px-2 py-6 border-2 text-xs outline-blue-500 border-gray-300 rounded-lg w-20 h-12"
                     placeholder="Adult"
-                    />
-                  <input
-                    type="number"
-                    min={0}
+                    /> */}
+                    <select defaultValue={1} 
+                    name="adult"
                     onChange={handleParams}
+                    className=" rounded-lg px-4 text-sm border-2 bg-white outline-blue-500">
+                        <option value={1}>Adult</option>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                        <option value={6}>6</option>
+                        <option value={7}>7</option>
+                        <option value={8}>8</option>
+                        <option value={9}>9</option>
+                    </select>
+                    <select defaultValue={0} 
                     name="child"
-                    className="px-2 py-6 border-2 text-xs outline-blue-500 border-gray-300 rounded-lg w-20 h-12"
-                    placeholder="child"
-                    />
+                    onChange={handleParams}
+                    className="rounded-lg px-4 text-sm border-2 bg-white outline-blue-500">
+                        <option value={0}>child</option>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                        <option value={6}>6</option>
+                        <option value={7}>7</option>
+                        <option value={8}>8</option>
+                        <option value={9}>9</option>
+                    </select>
+                 
                 </div>
               </div>
             </div>
           </div>
           <div className="text-center -mt-5 w-full">
-
               <button
                 className={`tracking-wide bg-gradient-to-r to-cyan-500 text-white shadow-purple-200 shadow-xl rounded-full h-10 ${location.pathname!=='/searchFlight'?'px-16':'px-8'} font-bold hover:tracking-widest`}
                 onClick={handleSearch}>
                 {location.pathname!=='/searchFlight'?'SEARCH':'UPDATE SEARCH'}
               </button>
-
           </div>
       </div>
       <Outlet/>
     </div>
-  );
+  )
 };
 
 export default SerachMenu;

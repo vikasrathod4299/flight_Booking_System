@@ -3,7 +3,7 @@ import React from "react";
 const FareSummary = (props) => {
     
    return (
-    <div className="bg-white rounded-md h-min shadow-md w-56">
+    <div style={{"backdropFilter": "blur(10px)"}} className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border border-gray-200 rounded-md h-min  w-56">
       <div className="p-4">
         <p className="font-bold">FARE SUMMARY</p>
         <code className="font-thin text-xs">

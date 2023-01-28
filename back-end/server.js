@@ -42,6 +42,8 @@ app.use("/api/bookings", bookingRoute);
 const seatsRoute = require("./routes/seats.routes");
 app.use("/api/seats", seatsRoute);
 
+const authRoute = require("./routes/auth.routes");
+app.use("/api/auth", authRoute);
 
 db.sequelize
   .sync({ force: false })
@@ -49,5 +51,4 @@ db.sequelize
     app.listen(process.env.PORT || 3001, () =>
       console.log(`Server is running on port ${process.env.PORT}!`)
     )
-  )
-  .catch((err) => console.log(err));
+  ).catch((err) => console.log(err));

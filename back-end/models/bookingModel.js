@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes)=>{
 
     booking.associate=function(model){
         booking.belongsTo(model.flights)
+        booking.belongsTo(model.user)
         booking.hasMany(model.seat)
         booking.hasMany(model.passenger)
     }

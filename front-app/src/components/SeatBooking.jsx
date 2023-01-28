@@ -25,7 +25,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
         console.log(err);
       }
     })()
-  },[])
+  },[flight.id])
   
   
   const handleSeat = (e, index) => {
@@ -67,14 +67,14 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
 
 
   return (
-    <div className="bg-white w-[700px] h-[700px] px-6 py-2 rounded-lg">
+    <div style={{"backdropFilter": "blur(15px)"}} className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border border-gray-200 w-[700px] h-[700px] px-6 py-2 rounded-lg">
       
       <p>ADDONS (Seat Booking)</p>
 
       <div className="flex ">
         {loader==='success'
         ?
-            <div className={`bg-gradient-to-r from-purple-500 to-cyan-500 overflow-y-scroll h-[650px] w-[450px] rounded-md`}>
+            <div className={`overflow-y-scroll h-[650px] w-[450px] rounded-md`}>
 
               <img src={"https://goibibo.ibcdn.com/styleguide/images/reassetsformealsseats_dweb/plane_top.png"} alt="seatBooking"/>
               <img src={"https://goibibo.ibcdn.com/styleguide/images/reassetsformealsseats_dweb/plane_bot.png"} alt="seatBooking"/>
@@ -82,7 +82,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
               <div className="grid grid-cols-[35px,35px,60px,35px,35px,35px] gap-y-1 ml-[96px] -mt-[1025px] text-xs">
               
                 {allSeats?.map((seat, index) => {
-                  return disableSeats.find(seat=>seat.seat_number==index+1) && 
+                  return disableSeats.find(seat=>seat.seat_number===index+1) && 
                     (<div
                       key={index}
                       className={`bg-gray-300 text-white font-extrabold border-2 rounded-md flex w-8 h-8 justify-center items-center`}>
@@ -114,9 +114,9 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
 
             </div>
           : 
-          <div className="flex flex-col items-center justify-center h-[650px] w-[450px]">
+          <div className="bg-white rounded-lg flex flex-col items-center justify-center h-[650px] w-[450px]">
               <img className="h-14" src={loadingGif} alt='loder'/>
-              <code className="text-xs">Searching flights...</code>
+              <code className="text-xs">Fetching Seats...</code>
           </div>
           }
             <div className={`flex flex-col justify-between gap-y-3 p-2`}>
@@ -142,7 +142,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                                 </code>
 
                                 {bookedSeats[index] 
-                                ? (<p className="text-sm font-bold text-slate-400">
+                                ? (<p className="text-sm font-bold text-slate-500">
                                     {bookedSeats[index] <= 54 && "₹100"}
                                     {bookedSeats[index] > 54 && bookedSeats[index] < 109 &&"₹750"}
                                     {bookedSeats[index] > 108 && "₹1100"}
@@ -167,7 +167,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                                 </code>
 
                                 {bookedSeats[index + adult]
-                                ? (<p className="text-sm font-bold text-slate-400">
+                                ? (<p className="text-sm font-bold text-slate-500">
                                     {bookedSeats[index + adult] <= 54 && "₹100"}
                                     {bookedSeats[index + adult] > 54 && bookedSeats[index + adult] < 109 &&"₹750"}
                                     {bookedSeats[index + adult] > 108 && "₹1100"}
@@ -185,23 +185,30 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                   <div className="flex justify-between items-center">
                     <div className="flex gap-x-2 items-center w-40">
                       <div className="w-4 h-4 border-2 border-green-500"></div>
-                      <p className="text-sm text-slate-600">Ecconomy</p>
+                      <p className="text-sm text-black">Ecconomy</p>
                     </div>
-                    <p className="text-sm text-slate-600">₹100</p>
+                    <p className="text-sm text-black">₹100</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <div className="flex gap-x-2 items-center w-40">
                       <div className="w-4 h-4 border-2 border-blue-300"></div>
-                      <p className="text-sm text-slate-600 ">Premium</p>
+                      <p className="text-sm text-black ">Premium</p>
                     </div>
-                    <p className="text-sm text-slate-600 ">₹1100</p>
+                    <p className="text-sm text-black ">₹1100</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <div className="flex gap-x-2 items-center w-40">
                       <div className="w-4 h-4 border-2 border-purple-300"></div>
-                      <p className="text-sm text-slate-600">Bussiness</p>
+                      <p className="text-sm text-black">Bussiness</p>
                     </div>
-                    <p className="text-sm text-slate-600">₹750</p>
+                    <p className="text-sm text-black">₹750</p>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-x-2 items-center w-40">
+                      <div className="w-4 h-4 border-2 border-gray-300 bg-gray-300 text-xs text-white flex items-center justify-center">x</div>
+                      <p className="text-sm text-black">Booked</p>
+                    </div>
+                    <p className="text-sm text-black">--</p>
                   </div>
                   <div className="flex gap-y-2 flex-col">
                     <button
@@ -221,9 +228,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                 </div>
 
             </div>
-    
       </div>
-      
     </div>
   );
 };

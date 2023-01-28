@@ -1,15 +1,15 @@
 import React from 'react'
 
-const TicketDetail = ({flight, bookingClass}) => {
-
+const TicketDetail = ({flight, bookingClass, from, to}) => {
+    console.log(flight);
   return (
-    <div className=' p-4 border-2 bg-white  rounded-md w-[700px]'>
+    <div style={{"backdropFilter": "blur(15px)"}} className=' p-4 bg-white shadow-lg bg-clip-padding bg-opacity-40 border border-gray-200 rounded-md w-[700px]'>
         <p>TICKET DETAIL</p>
-        <div className='p-3 border border-1 '>
+        <div className='p-3 border border-1 bg-white'>
             <div className='flex justify-between gap-x-4 items-center h-32'>
 
                 <div className='flex flex-col w-1/3 items-start'>
-                    <img className='h-8' src='https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/6E.png?v=14'/>
+                    <img className='h-8' src={flight.aircraft.agency.logo}/>
                     <p className='text-xs text-slate-400'>{flight.aircraft.agency.agency_name}</p>
                     <p className='text-xs text-slate-400'>{bookingClass}</p>
                     <p className='text-xs text-slate-400'>{flight.aircraft.aircraft_number}</p>
@@ -18,9 +18,9 @@ const TicketDetail = ({flight, bookingClass}) => {
 
                 <div className='w-1/2'>
                     <p className='text-xs'>Wed Feb 01 2023</p>
-                    <p className=''>AMD <span className='font-bold'>{flight.depTime}</span></p>
-                    <p className='text-xs text-slate-400'>Sardar Vallabhbhai Patel International Airport,</p>
-                    <p className='text-xs text-slate-400'>Ahmedabad, India</p>
+                    <p className=''>{from.name} <span className='font-bold'>{flight.depTime}</span></p>
+                    <p className='text-xs text-slate-400'>{from.airports[0]?.airport_name}</p>
+                    <p className='text-xs text-slate-400'>{from.name}, {from.country}</p>
                 </div>
 
                 <div className='flex items-center gap-x-1 w-1/2'>
@@ -36,9 +36,9 @@ const TicketDetail = ({flight, bookingClass}) => {
 
                 <div className='w-1/2'>
                   <p className='text-xs'>Wed Feb 01 2023</p>
-                  <p className=''>AMD <span className='font-bold'>{flight.arrTime}</span></p>
-                  <p className='text-xs text-slate-400'>Sardar Vallabhbhai Patel International Airport,</p>
-                  <p className='text-xs text-slate-400'>Ahmedabad, India</p>  
+                  <p className=''>{to.name} <span className='font-bold'>{flight.arrTime}</span></p>
+                  <p className='text-xs text-slate-400'>{to.airports[0]?.airport_name}</p>
+                  <p className='text-xs text-slate-400'>{to.name}, {from.country}</p>  
                 </div>
 
             </div>
