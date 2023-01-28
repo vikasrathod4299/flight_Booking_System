@@ -22,7 +22,7 @@ const Booking = () => {
         <div className="flex gap-x-2">
           <div className="flex">
             <div className="flex flex-col justify-center gap-y-2 items-center">
-                <TicketDetail from={from} to={to} flight={flight} bookingClass={bookingClass} />
+                 <TicketDetail from={from} to={to} flight={flight} bookingClass={bookingClass} />
                   {toggle==='details'
                     ?
                     <PassengersDetails searchParams={searchParams} setPassengers={setPassengers} passengers={passengers} setToggle={setToggle}/>
