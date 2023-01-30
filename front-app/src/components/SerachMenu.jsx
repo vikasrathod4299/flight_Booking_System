@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
 import LoginPopUp from './LoginPopUp'
 const SerachMenu = () => {
+  const [user, setUser] = useState()
   const navigate = useNavigate()
   const location = useLocation()
   const [toggle, setToggle] = useState(false)
@@ -49,7 +50,7 @@ const SerachMenu = () => {
 
   return (
     <div className="bg-gradient-to-r sticky -top-56 from-purple-500 to-cyan-500 h-64 shadow-purple-200 shadow-xl p-4">
-       {toggle&&<LoginPopUp showLogin={showLogin}/>}
+       {toggle&&<LoginPopUp showLogin={showLogin} setUser={setUser} user={user}/>}
       
       <div className="mx-8 flex justify-between">
 
@@ -65,15 +66,15 @@ const SerachMenu = () => {
                 <i class="fa-solid fa-ticket text-white"/> Show my Tickets
               </button>
 
-              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
-              onClick={showLogin}>
+              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200">
                 About
               </button>
 
                     
               <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
-                onClick={showLogin}>
-                  <i class="fa-solid fa-arrow-right-to-bracket text-white"/> Login/SignUp
+                onClick={()=>!user?showLogin():setUser(null)}>
+                  {!user&&<div className="flex items-center gap-x-1"> <i class="fa-solid fa-arrow-right-to-bracket text-white"/> Login/SignUp</div>}
+                  {user&&<div className="flex items-center gap-x-1 tracking-widest"> <i class="fa-solid fa-user"></i>{user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}</div>}
                 </button>
             </div>
       </div>
@@ -142,14 +143,7 @@ const SerachMenu = () => {
                   Travellers:
                 </code>
                 <div className="flex gap-x-1 h-14">
-                  {/* <input
-                    type="number"
-                    value={params.adult}
-                    onChange={handleParams}
-                    name="adult"
-                    className="px-2 py-6 border-2 text-xs outline-blue-500 border-gray-300 rounded-lg w-20 h-12"
-                    placeholder="Adult"
-                    /> */}
+
                     <select defaultValue={1} 
                     name="adult"
                     onChange={handleParams}
