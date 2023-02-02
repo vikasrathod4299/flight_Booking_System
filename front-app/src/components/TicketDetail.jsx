@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TicketDetail = ({flight, bookingClass, from, to}) => {
-    console.log(flight);
+
   return (
     <div style={{"backdropFilter": "blur(15px)"}} className=' p-4 bg-white shadow-lg bg-clip-padding bg-opacity-40 border border-gray-200 rounded-md w-[700px]'>
         <p>TICKET DETAIL</p>

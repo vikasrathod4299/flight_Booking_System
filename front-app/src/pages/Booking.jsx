@@ -5,15 +5,15 @@ import SeatBooking from "../components/SeatBooking";
 import TicketDetail from "../components/TicketDetail";
 import { useState } from "react";
 import PassengersDetails from "../components/PassengersDetails";
+import {useAuth} from '../Hooks/useAuth'
 
 
 const Booking = () => {
+  const {user} = useAuth()
   const location = useLocation();
   const { flight, from, to, bookingClass, price } = location.state;
-  
-  const [passengers, setPassengers] = useState({})
+  const [passengers, setPassengers] = useState({phone:user?.mobile, email:user?.email})
   const [toggle, setToggle] = useState('details')
-
   const searchParams = JSON.parse(window.localStorage.getItem("searchParam"));
 
   return (

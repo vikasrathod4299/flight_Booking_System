@@ -2,12 +2,13 @@ import axios from "axios";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
-import LoginPopUp from './LoginPopUp'
+
+
 const SerachMenu = () => {
-  const [user, setUser] = useState()
+
   const navigate = useNavigate()
   const location = useLocation()
-  const [toggle, setToggle] = useState(false)
+  
   const [validatFlage, setFlag] = useState(false)
   const [errMsg, setErrMsg] = useState("");
   const [borderClass, setBorderClass] = useState('border-gray-300')
@@ -19,9 +20,6 @@ const SerachMenu = () => {
     adult: "1",
     child: 0,
   });
-
-  
-
 
   useEffect(() => {
     (async () => {
@@ -44,40 +42,11 @@ const SerachMenu = () => {
     }
   };
 
-  const showLogin = ()=>{
-    setToggle(toggle?false:true)
-  }
+
 
   return (
     <div className="bg-gradient-to-r sticky -top-56 from-purple-500 to-cyan-500 h-64 shadow-purple-200 shadow-xl p-4">
-       {toggle&&<LoginPopUp showLogin={showLogin} setUser={setUser} user={user}/>}
-      
-      <div className="mx-8 flex justify-between">
 
-            <div className="text-white font-mono font-bold">
-                <button style={{"backdropFilter": "blur(20px)"}} onClick={()=>navigate('/')} className=" cursor-pointer rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200">
-                    <i class="fa-solid fa-house text-white"></i> Home
-                </button>
-            </div>
-
-            <div className="flex text-white w-96 font-mono text-sm justify-around  tracking-tighter font-bold">
-              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
-              onClick={showLogin}>
-                <i class="fa-solid fa-ticket text-white"/> Show my Tickets
-              </button>
-
-              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200">
-                About
-              </button>
-
-                    
-              <button style={{"backdropFilter": "blur(20px)"}} className="rounded-full px-2 py-1 bg-white shadow-lg  bg-clip-padding bg-opacity-25 border hover:bg-opacity-40 border-gray-200"
-                onClick={()=>!user?showLogin():setUser(null)}>
-                  {!user&&<div className="flex items-center gap-x-1"> <i class="fa-solid fa-arrow-right-to-bracket text-white"/> Login/SignUp</div>}
-                  {user&&<div className="flex items-center gap-x-1 tracking-widest"> <i class="fa-solid fa-user"></i>{user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}</div>}
-                </button>
-            </div>
-      </div>
 
       <div className="pt-28 max-w-screen-xl  mx-auto px-20 lg:px-0 ">
           <div className=" bg-white flex justify-center items-center h-52 rounded-3xl shadow-xl px-12">

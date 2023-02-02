@@ -4,14 +4,19 @@ import OtpInput from 'react-otp-input';
 import {useForm } from "react-hook-form";
 import loginBanner from '../Assets/Images/loginBanner.png'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Hooks/useAuth";
 
 
-const LoginPopUp = ({showLogin, setUser, user}) => {
+
+const LoginPopUp = () => {
+    const navigate = useNavigate()
     const [otpToggler, setToggler] = useState('send')
     const [loader, setLoader] = useState('idle')
     const [mobile,setMobile] = useState('')
     const [otpValue, setOtpValue] = useState('')
     const [err, setErr] = useState(false)
+    const {user,setUser} = useAuth();
 
     const {
         register,
@@ -22,7 +27,8 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
     const onSubmit = async(data) => {
         try{
             setLoader('fetching')
-            await axios.post(`${process.env.REACT_APP_API_URL}auth/sendOtp`,data)
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/sendOtp`,data)
+            console.log(res.data);
             setLoader('success')
         }catch(err){
             console.log(err)
@@ -35,15 +41,16 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
     const onSubmitUser = async(data)=>{
         try{
             const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/register`,data)
-            setUser(res.data)
+            setUser({...res.data.userData, accessToken:res.data.accessToken})
             setToggler('welcome')
-            setTimeout(()=>{showLogin()},2000)
+            setTimeout(()=>{navigate('/')},2000)
         }catch{
             console.log(err);
         }
     }
 
     const handleOtp = async (otp)=>{
+
         setOtpValue(otp)
         if(otp.length===4){
             try{
@@ -51,10 +58,10 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
                 const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/varifyOtp`,data)
                 if(res.data.status==='approved'){
                     if(res.data.userData){
-                        console.log(res.data.userData);
-                        setUser(res.data.userData)
+                        console.log(res.data);
+                        setUser({...res.data.userData, accessToken:res.data.accessToken})
                         setToggler('welcome')
-                        setTimeout(()=>{showLogin()},2000)
+                        setTimeout(()=>{navigate('/')},2000)
                     }else{
                         setToggler('register')
                     }
@@ -69,12 +76,10 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
     }   
 
     return (
-        <div className=" z-50 fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div className=" top-0 left-0 h-screen w-screen flex items-center justify-center bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--RNNNA7AE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://user-images.githubusercontent.com/69592270/101304060-72ff5b00-380d-11eb-8c58-a3172d791c9c.png')] bg-cover bg-center">
             <div className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border backdrop-blur-lg border-gray-200 rounded-lg p-6">
                 {otpToggler!=='welcome' && <div className="flex justify-end ">
-                    <button onClick={showLogin}>
-                        <i className="fa-solid fa-circle-xmark text-white text-xl"/>
-                    </button>
+
                 </div>}
                 <div className="flex gap-x-8">
                     {(otpToggler!=='register' && otpToggler!=='welcome') && <div className="shadow-lg">
@@ -91,14 +96,19 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
                                     {(errors.mobile?.type==='minLength' || errors.mobile?.type==='maxLength') && <span className="text-red-500 text-xs mt-2">Invalid Phone Number...</span>}
                                     {errors.mobile?.type==='required' && <span className="text-red-500 text-xs mt-2">Phone Number is required...</span>}
                                 </div>                                
-                                {loader==='idle'&&<input className="shadow-lg px-4 py-2 w-1/2 rounded bg-indigo-500 outline-none text-white cursor-pointer" type="submit" value="Send OTP"/>}
-                                {loader==='fetching'&& <button type="button" className="flex items-center shadow-lg text-xs px-4 py-2 w-1/2 rounded bg-indigo-500 outline-none text-white cursor-pointer" disabled>
-                                                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                                </svg>
-                                                            Sending
-                                                        </button>}
+                                {
+                                loader==='idle' &&
+                                <input className="shadow-lg px-4 py-2 w-1/2 rounded bg-indigo-500 outline-none text-white cursor-pointer" type="submit" value="Send OTP"/>}
+                                {
+                                loader==='fetching' &&
+                                 <button type="button" className="flex items-center shadow-lg text-xs px-4 py-2 w-1/2 rounded bg-indigo-500 outline-none text-white cursor-pointer" disabled>
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    Sending
+                                </button>
+                                }
                             </form>
                         </div>}
 
@@ -145,7 +155,7 @@ const LoginPopUp = ({showLogin, setUser, user}) => {
                                 <div className=" flex h-full justify-center flex-col items-center gap-6">
                                     
                                     <p className="text-6xl font-bold tracking-widest">Welcome</p>
-                                    <code className=" text-4xl font-thin">{user.first_name}</code>
+                                    <code className=" text-4xl font-thin">{user?.first_name}</code>
                                 </div>
                                 
                                 <div className="flex justify-end italic tracking-widest text-sm">

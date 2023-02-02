@@ -15,7 +15,7 @@
     "host": "localhost",
     "port":1100,
     "dialect": "postgres",
-    "logging":  false 
+    "logging":  true 
   },
   "production": {
     "username": "boardactive",

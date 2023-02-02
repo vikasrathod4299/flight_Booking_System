@@ -45,8 +45,13 @@ app.use("/api/seats", seatsRoute);
 const authRoute = require("./routes/auth.routes");
 app.use("/api/auth", authRoute);
 
+const userRoute = require("./routes/user.routes");
+app.use("/api/user", userRoute);
+
+
+
 db.sequelize
-  .sync({ force: false })
+  .sync({ force : false })
   .then(() =>
     app.listen(process.env.PORT || 3001, () =>
       console.log(`Server is running on port ${process.env.PORT}!`)

@@ -1,13 +1,14 @@
 import React from 'react'
 import {useForm } from "react-hook-form";
 
+
 const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle}) => {
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+      } = useForm({mode:'all'});
 
       const onSubmit = (data) => {
         setPassengers(data)
