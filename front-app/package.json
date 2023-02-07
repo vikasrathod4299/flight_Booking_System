@@ -10,12 +10,12 @@
     "geolib": "^3.3.3",
     "joi": "^17.7.0",
     "react": "^18.2.0",
-    "react-datalist-input": "^3.2.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",
     "react-otp-input": "^2.4.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
     "tw-elements": "^1.0.0-alpha13",
     "web-vitals": "^2.1.4"
   },

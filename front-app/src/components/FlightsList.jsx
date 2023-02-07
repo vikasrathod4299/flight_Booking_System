@@ -1,6 +1,5 @@
 import React from "react";
 import FlightCard from "./FlightCard";
-import flightLogo from "../Assets/Images/direct-flight.png";
 
 const FlightsList = ({ flights }) => {
   return (

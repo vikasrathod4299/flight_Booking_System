@@ -4,7 +4,7 @@ import OtpInput from 'react-otp-input';
 import {useForm } from "react-hook-form";
 import loginBanner from '../Assets/Images/loginBanner.png'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate} from "react-router-dom";
 import { useAuth } from "../Hooks/useAuth";
 
 
@@ -17,19 +17,23 @@ const LoginPopUp = () => {
     const [otpValue, setOtpValue] = useState('')
     const [err, setErr] = useState(false)
     const {user,setUser} = useAuth();
-
+    const location = useLocation()
+    
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm();
+        } = useForm();
+    
+     if(!location.state)return <Navigate to={'/'}/>   
+    const {pathname, searchParams} = location.state
+
 
     const onSubmit = async(data) => {
         try{
             setLoader('fetching')
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/sendOtp`,data)
-            console.log(res.data);
-            setLoader('success')
+            await axios.post(`${process.env.REACT_APP_API_URL}auth/sendOtp`,data)
+            setLoader('success')    
         }catch(err){
             console.log(err)
         }
@@ -58,10 +62,10 @@ const LoginPopUp = () => {
                 const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/varifyOtp`,data)
                 if(res.data.status==='approved'){
                     if(res.data.userData){
-                        console.log(res.data);
                         setUser({...res.data.userData, accessToken:res.data.accessToken})
                         setToggler('welcome')
-                        setTimeout(()=>{navigate('/')},2000)
+                    
+                         setTimeout(()=>{navigate(searchParams.length>0?pathname+'?'+searchParams:pathname)},2000)
                     }else{
                         setToggler('register')
                     }
@@ -161,8 +165,7 @@ const LoginPopUp = () => {
                                 <div className="flex justify-end italic tracking-widest text-sm">
                                     <p>Let's fly.</p>
                                 </div>   
-                            </div>
-                        }
+                            </div>  }
                       </div>
                 </div>
             </div>

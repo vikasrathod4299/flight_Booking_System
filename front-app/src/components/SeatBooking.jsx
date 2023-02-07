@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
   const [allSeats, setAllSeat] = useState(new Array(150).fill(0));
-  const [validation, setValidation] = useState({borderClass:'',errMsg:''})
-  const [bookedSeats, setBookedSeats] = useState([])
-  const [loader, setLoader] = useState('idle')
-  const [disableSeats, setDisableSeats] = useState([])
-  const navigate = useNavigate()
+  const [validation, setValidation] = useState({borderClass:'',errMsg:''});
+  const [bookedSeats, setBookedSeats] = useState([]);
+  const [loader, setLoader] = useState('idle');
+  const [disableSeats, setDisableSeats] = useState([]);
+  const navigate = useNavigate();
 
   
   useEffect(()=>{
@@ -118,7 +118,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
               <img className="h-14" src={loadingGif} alt='loder'/>
               <code className="text-xs">Fetching Seats...</code>
           </div>
-          }
+        }
             <div className={`flex flex-col justify-between gap-y-3 p-2`}>
                 <div>
                   <div className={`flex flex-col gap-y-2 text-md ${validation.borderClass} p-1 rounded`}>
@@ -144,8 +144,8 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                                 {bookedSeats[index] 
                                 ? (<p className="text-sm font-bold text-slate-500">
                                     {bookedSeats[index] <= 54 && "₹100"}
-                                    {bookedSeats[index] > 54 && bookedSeats[index] < 109 &&"₹750"}
-                                    {bookedSeats[index] > 108 && "₹1100"}
+                                    {bookedSeats[index] > 54 && bookedSeats[index] < 109 &&"₹1100"}
+                                    {bookedSeats[index] > 108 && "₹750"}
                                   </p>) 
                                 : ("--")
                                 }
@@ -169,8 +169,8 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
                                 {bookedSeats[index + adult]
                                 ? (<p className="text-sm font-bold text-slate-500">
                                     {bookedSeats[index + adult] <= 54 && "₹100"}
-                                    {bookedSeats[index + adult] > 54 && bookedSeats[index + adult] < 109 &&"₹750"}
-                                    {bookedSeats[index + adult] > 108 && "₹1100"}
+                                    {bookedSeats[index + adult] > 54 && bookedSeats[index + adult] < 109 &&"₹1100"}
+                                    {bookedSeats[index + adult] > 108 && "₹750"}
                                   </p>) 
                                 : ("--")
                                 }

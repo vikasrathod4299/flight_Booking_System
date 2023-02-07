@@ -17,7 +17,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
   
 
   return (
-    <div className="bg-white shadow-lg bg-clip-padding bg-opacity-30 backdrop-blur-lg border border-gray-200 rounded-md px-8 py-4 w-[700px]">
+    <div className="bg-slate-300 shadow-lg bg-clip-padding bg-opacity-30 backdrop-blur-lg border border-gray-200 rounded-md px-8 py-4 w-[700px]">
     <code className="text-black">Passengers Details</code>
     <form
       className="flex flex-col gap-y-4 "
@@ -67,11 +67,11 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                   aria-labelledby={`#heading${index}`}
                   data-bs-parent="#accordionExampleadult"
                 >
-                  <div className="flex justify-around accordion-body py-4 px-5">
+                  <div className="flex justify-around items-center accordion-body py-4 px-5">
                     <code>Name</code>
-                    <div className="flex h-8 gap-x-2">
+                    <div className="flex h-8 gap-x-2 items-center">
                       <div className="flex flex-col">
-                        <select defaultValue={passengers[`adult${index + 1}title`] || ""} {...register(`adult${index + 1}title`,{required: true})}>
+                        <select className='p-1 rounded-md bg-white border-2' defaultValue={passengers[`adult${index + 1}title`] || ""} {...register(`adult${index + 1}title`,{required: true})}>
                           <option value={''} disabled>
                             Title
                           </option>
@@ -89,7 +89,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                     <div className="flex gap-x-4">
                       <div className="flex flex-col">
                         <input
-                          className="outline-blue-400 border-2 rounded-md w-52"
+                          className="outline-blue-400 border-2 rounded-md w-52 py-1 px-2"
                           type="text"
                           id={`adult${index + 1}firstName`}
                           name={`adult${index + 1}firstName`}
@@ -111,7 +111,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                       </div>
                       <div className="flex flex-col">
                         <input
-                          className="outline-blue-400 border-2 rounded-md w-52"
+                          className="outline-blue-400 border-2 rounded-md w-52 py-1 px-2"
                           type="text"
                           id={`adult${index + 1}lastName`}
                           name={`adult${index + 1}lastName`}
@@ -183,11 +183,11 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                   aria-labelledby={`#heading${index}child`}
                   data-bs-parent="#accordionExamplechild">
 
-                  <div className="flex justify-around accordion-body py-4 px-5">
+                  <div className="flex justify-around items-center accordion-body py-4 px-5">
                     <code>Name</code>
-                    <div className="flex gap-x-2">
+                    <div className="flex gap-x-2 items-center">
                       <div className="flex flex-col">
-                        <select defaultValue={passengers[`child${index + 1}title`]||""} {...register(`child${index + 1}title`,{required: true})}>
+                        <select className='p-1 rounded-md bg-white border-2' defaultValue={passengers[`child${index + 1}title`]||""} {...register(`child${index + 1}title`,{required: true})}>
                           <option value={""} disabled>
                             Title
                           </option>
@@ -204,7 +204,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                     <div className="flex gap-x-4">
                       <div className="flex flex-col">
                         <input
-                          className="outline-blue-400 border-2 rounded-md w-52"
+                          className="outline-blue-400 border-2 rounded-md w-52 py-1 px-2"
                           type="text"
                           placeholder="First Name"
                           id={`child${index + 1}firstName`}
@@ -227,7 +227,7 @@ const PassengersDetails = ({searchParams, setPassengers, passengers, setToggle})
                       </div>
                       <div className="flex flex-col">
                         <input
-                          className="outline-blue-400 border-2 rounded-md w-52"
+                          className="outline-blue-400 border-2 rounded-md w-52 py-1 px-2"
                           type="text"
                           placeholder="Last Name"
                           id={`child${index + 1}lastName`}

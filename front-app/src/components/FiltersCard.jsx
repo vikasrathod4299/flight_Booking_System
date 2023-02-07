@@ -2,8 +2,7 @@ import React from 'react'
 
 const FiltersCard = ({handleChange}) => {
 
-  return (
-    <div className='flex flex-col items-center bg-white shadow-md rounded-lg rounded-md h-52 w-40 mt-10'>
+  return (<div className='flex flex-col items-center bg-white shadow-md rounded-md h-52 w-40 mt-10'>
             <p className='text-bold'>Preferd Airlines</p>
         <div className='flex flex-col gap-y-2 p-3'>
             <label className='cursor-pointer flex items-center gap-x-2'>
@@ -32,8 +31,7 @@ const FiltersCard = ({handleChange}) => {
                 <span>Emirets</span>
             </label>
         </div>
-    </div>
-  )
+    </div>)
 }
 
 export default FiltersCard

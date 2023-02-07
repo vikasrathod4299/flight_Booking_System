@@ -61,7 +61,7 @@ const Flights = () => {
     }else{
         setFlights(p=>({...p,flights:mainData}))
     }
-  }, [agencyFilters]);
+  }, [agencyFilters,mainData]);
 
 
   return (

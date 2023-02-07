@@ -7,12 +7,12 @@ const DisplayBookings = () => {
     const {user} = useAuth() 
     const [bookings, setBookings] = useState([]);
     
-    const headers = {'Authorization':user.accessToken}
     useEffect(()=>{
         if(user)(async()=>{
+            const headers = {'Authorization':user.accessToken}
             const bookings = await axios.get(`${process.env.REACT_APP_API_URL}bookings/${user.id}`,{headers})
             setBookings(bookings.data)
-            console.log(bookings.data);
+
         })()
     },[user])
 
@@ -62,7 +62,8 @@ const DisplayBookings = () => {
                                
                                {
                                 bookings.map((item,index)=>{
-                                   return (<tr className={`bg-white border-b ${index%2==0?'bg-opacity-20':'bg-opacity-40'} drop-shadow-md`}>
+                                   return (
+                                   <tr key={index} className={`bg-white border-b ${index%2===0?'bg-opacity-20':'bg-opacity-40'} drop-shadow-md`}>
                                     <th scope="row" className="px-3 py-4 font-medium  whitespace-nowrap ">
                                         {item.id}
                                     </th>
@@ -94,28 +95,7 @@ const DisplayBookings = () => {
 
                                 })
                                }
-
-
-                                {/* <tr className="border-b bg-white bg-opacity-30 drop-shadow-md">
-                                    <th scope="row" className="px-3 py-4 font-medium ">
-                                        2
-                                    </th>
-                                    <td className="px-3 py-4">
-                                        White
-                                    </td>
-                                    <td className="px-3 py-4">
-                                        Laptop PC
-                                    </td>
-                                    <td className="px-3 py-4">
-                                        $1999
-                                    </td>
-                                    <td className="px-3 py-4">
-                                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    </td>
-                                </tr>
-                                */}
                             </tbody>
-
                         </table>
                     </div>
                 </div>
