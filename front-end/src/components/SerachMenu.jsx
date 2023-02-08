@@ -50,7 +50,7 @@ const SerachMenu = () => {
 
       <div className="pt-28 max-w-screen-xl  mx-auto px-20 lg:px-0 ">
           <div className=" bg-white flex justify-center items-center h-52 rounded-3xl shadow-xl px-12">
-            <div className="flex gap-x-4 w-[80vw] mx-auto flex-col sm:flex-row">
+            <div className="flex ml-28 gap-x-4 w-[80vw] mx-auto flex-col sm:flex-row">
               <SearchInput
                 cities={cities}
                 ph="From"

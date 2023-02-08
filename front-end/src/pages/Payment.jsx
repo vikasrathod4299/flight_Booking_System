@@ -112,10 +112,9 @@ const Payment = () => {
           }
       }
   }
-console.log(typeof getValues('amount'));
-  return (
-    <div className="top-0 left-0 h-screen w-screen flex items-center justify-center bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--RNNNA7AE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://user-images.githubusercontent.com/69592270/101304060-72ff5b00-380d-11eb-8c58-a3172d791c9c.png')] bg-cover bg-center">
 
+  return (
+    <div className="top-0 left-0 h-screen w-screen flex items-center justify-center bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--RNNNA7AE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://user-images.githubusercontent.com/69592270/101304060-72ff5b00-380d-11eb-8c58-a3172d791c9c.png')] bg-cover bg-center"> 
         <div className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border backdrop-blur-lg border-gray-200 rounded-lg p-6">
               <div className="flex gap-x-8">
                       <div className="shadow-lg">

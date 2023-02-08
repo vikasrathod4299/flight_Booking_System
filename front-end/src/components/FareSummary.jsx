@@ -1,7 +1,7 @@
 import React from "react";
 
 const FareSummary = (props) => {
-    
+
    return (
     <div style={{"backdropFilter": "blur(10px)"}} className="bg-white shadow-lg bg-clip-padding bg-opacity-25 border border-gray-200 rounded-md h-min  w-56">
       <div className="p-4">
@@ -52,7 +52,7 @@ const FareSummary = (props) => {
         <div className="flex justify-between items-center">
           <p className="font-bold text-blue-500">Grand Totel</p>
           <p className="font-bold text-blue-500 text-xl">
-            {(props.price * (parseInt(props.adult) + parseInt(props.child)))
+            {((props.price * (parseInt(props.adult) + parseInt(props.child)))+props.seatPrice)
               .toLocaleString("en-IN", { style: "currency", currency: "INR" })
               .slice(0, -3)}
           </p>

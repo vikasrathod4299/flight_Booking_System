@@ -81,7 +81,7 @@ const Flights = () => {
                     </div>) 
                 : 
                   (<div className="flex justify-center gap-x-5 px-10">
-                    <FiltersCard handleChange={handleFilterChange} />
+                    {/* <FiltersCard handleChange={handleFilterChange} /> */}
                     <FlightsList flights={flights} />
                     <FlightsList flights={returnFlights} />
                   </div>)

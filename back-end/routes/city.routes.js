@@ -6,4 +6,4 @@ router.get('/searchCity',contoller.searchCities)
 router.post('/',contoller.addCity)
 router.post('/bulk',contoller.addBulk)
 
-module.exports = router;
+module.exports = router;    

@@ -13,7 +13,6 @@ router.post("/sendOtp", async (req, res) => {
   const { mobile } = req.body;
   try {
     if(env==='production'){
-      console.log('helo');
       const data = await client.verify.v2
       .services(process.env.TWILIO_SERVICE_SID)
       .verifications.create({

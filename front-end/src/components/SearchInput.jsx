@@ -34,7 +34,7 @@ const SearchInput = (props) => {
       <p className="text-red-500 text-xs">{props.errMsg}</p>
 
       {showList && (
-        <div className=" h-52 fixed w-1/6 mt-20 overflow-y-auto ">
+        <div className=" h-52 fixed w-48 mt-20 overflow-y-auto ">
           {filteredCities.map((city) => {
             return (
               <p

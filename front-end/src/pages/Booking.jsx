@@ -14,11 +14,12 @@ const Booking = () => {
     phone: user?.mobile,
     email: user?.email,
   });
+  const [seatPrice, setSeatPrice] = useState(0);
   const [toggle, setToggle] = useState("details");
   const searchParams = JSON.parse(window.localStorage.getItem("searchParam"));
   if (!location.state) return <Navigate to="/" />;
   const { flight, from, to, bookingClass, price } = location.state;
-  
+
   return (  
     <div className="bg-[url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80')]  bg-cover bg-center opacity-80">
       <div className="container flex justify-center items-center h-screen gap-x-4">
@@ -46,6 +47,7 @@ const Booking = () => {
                   adult={parseInt(searchParams.adult)}
                   child={parseInt(searchParams.child)}
                   passengers={passengers}
+                  setSeatPrice={setSeatPrice}
                 />
               )}
             </div>
@@ -54,6 +56,7 @@ const Booking = () => {
             adult={searchParams.adult}
             child={searchParams.child}
             price={price}
+            seatPrice={seatPrice}
           />
         </div>
       </div>

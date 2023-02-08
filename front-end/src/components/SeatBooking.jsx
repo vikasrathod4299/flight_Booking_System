@@ -5,12 +5,13 @@ import loadingGif from '../Assets/Images/Loading_2.gif'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
+const SeatBooking = ({ setToggle, adult, child, passengers, price, flight, setSeatPrice}) => {
   const [allSeats, setAllSeat] = useState(new Array(150).fill(0));
   const [validation, setValidation] = useState({borderClass:'',errMsg:''});
   const [bookedSeats, setBookedSeats] = useState([]);
   const [loader, setLoader] = useState('idle');
   const [disableSeats, setDisableSeats] = useState([]);
+
   const navigate = useNavigate();
 
   
@@ -28,7 +29,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
   },[flight.id])
   
   
-  const handleSeat = (e, index) => {
+  const handleSeat = (index) => {
     if (!bookedSeats.includes(index)) {
       if (bookedSeats.length < adult + child) {
         bookedSeats.push(index);
@@ -39,8 +40,19 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
     } else {
       bookedSeats.splice(bookedSeats.indexOf(index), 1);
     }
+
     
     setBookedSeats([...bookedSeats])
+
+    setSeatPrice(bookedSeats.reduce((accumilator, a)=>{
+      if(a<=54){
+        return accumilator+100
+      }else if(a>54 && a<=108){
+        return accumilator + 1100
+      }else{
+        return accumilator+750
+      }
+    },0));
 
     setAllSeat([
       ...allSeats.map((seat, index) => {
@@ -55,6 +67,7 @@ const SeatBooking = ({ setToggle, adult, child, passengers, price, flight}) => {
     setValidation({borderClass:'',errMsg:''})
 
   };
+
 
   const handlePaytoProcced = () => {
     if (bookedSeats.length !== adult + child) {

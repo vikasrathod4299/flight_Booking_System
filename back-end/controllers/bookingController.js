@@ -90,4 +90,21 @@ const createBooking = async (req, res) => {
   }
 };
 
-module.exports = { createBooking, getBookingsbyId };
+
+
+const deleteBookingByd = async(req,res)=>{
+  const {bookingId} = req.params;
+  console.log('hello');
+  try{
+        await passenger.destroy({where:{bookingId:bookingId}})
+        await seat.destroy({where:{bookingId:bookingId}})
+        await booking.destroy({where:{id:bookingId}})
+        res.status(200).json("Booking is canceled!")
+    }
+    catch(err){
+      console.log(err);
+      res.status(500).json(err)
+  }
+}
+
+module.exports = { createBooking, getBookingsbyId, deleteBookingByd };

@@ -91,7 +91,6 @@ const LiveCodingTest = () => {
                             <p className='italic'> Name:<span className='text-sm px-2'>{selectedUser.name}</span></p>
                             <hr/>
                             <p className='italic'> Designation:<span className='text-sm px-2'>{selectedUser.designation}</span></p>
-
                             <hr/>
                             <div>
                                  <p className='italic'>Team Members:</p>

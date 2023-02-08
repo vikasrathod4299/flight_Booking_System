@@ -1,13 +1,18 @@
 require("dotenv").config();
 const express = require("express");
-
+const morgan = require('morgan')
 const app = express();
 const cors = require("cors");
+
+app.use(morgan('dev'))
+
 app.use(cors());
 
 const db = require("./models");
 
 app.use(express.json());
+
+
 
 app.use(
   (req, res, next) =>
@@ -17,6 +22,8 @@ app.use(
       }, 1000);
     })
 );
+
+
 
 const cityRoute = require("./routes/city.routes");
 app.use("/api/city", cityRoute);
@@ -47,6 +54,9 @@ app.use("/api/auth", authRoute);
 
 const userRoute = require("./routes/user.routes");
 app.use("/api/user", userRoute);
+
+const passengersRoute = require("./routes/passengers.routes");
+app.use("/api/passengers", passengersRoute);
 
 
 
